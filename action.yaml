@@ -1,0 +1,37 @@
+name: "Money Circles Deployment Github Action Composite"
+description: "Deploy Money Circles services to kubernetes aks with helm"
+author: 'ahmed.mahmoud@money-circles.com'
+inputs:
+  client_id:
+    description: 'Azure Service Principle Client ID'
+    required: true
+  client_secret:
+    description: 'Azure Service Principle Client Secret'
+    required: true
+  tenant_id:
+    description: 'Azure Service Principle Tenant ID'
+    required: true
+  cluster_name:
+    description: 'Kubernetes Cluster name'
+    required: true
+  helm_chart:
+    description: 'Helm chart name'
+    required: true
+  image:
+    description: 'Docker image sha'
+    required: true
+  http_port:
+    description: 'Docker image sha'
+    required: true
+  host:
+    description: 'Host of the deployment'
+    required: true
+  replicas:
+    description: 'Replica count'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'anchor'
+  color: 'blue'
