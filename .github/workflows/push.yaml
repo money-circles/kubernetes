@@ -16,6 +16,6 @@ jobs:
           image: ${{ env.GITHUB_REPOSITORY_OWNER_PART }}/mc-ubuntu18
           directory: docker-images/dind-az-helm
           password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
-          registry: ${{ secrets.CONTAINER_REGISTRY_SERVER }}
+          registry: docker.io
           tag: ${{ env.GITHUB_REF_SLUG }}
           username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
