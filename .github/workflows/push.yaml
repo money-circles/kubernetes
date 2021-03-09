@@ -1,0 +1,21 @@
+name: production
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  build_image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo REPOSITORY_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//") >> $GITHUB_ENV
+        shell: bash
+      - uses: rlespinasse/github-slug-action@v3.x
+      - uses: mr-smithers-excellent/docker-build-push@v3
+        with:
+          image: mc-ubuntu18
+          directory: docker-images/dind-az-helm
+          password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+          registry: ${{ secrets.CONTAINER_REGISTRY_SERVER }}
+          tag: ${{ env.GITHUB_REF_SLUG }}
+          username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
