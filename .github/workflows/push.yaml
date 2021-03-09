@@ -13,7 +13,7 @@ jobs:
       - uses: rlespinasse/github-slug-action@v3.x
       - uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: ${{ env.GITHUB_REPOSITORY_OWNER_PART }}/mc-ubuntu18
+          image: moneycircles/mc-ubuntu18
           dockerfile: 'docker-images/dind-az-helm/Dockerfile'
           password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
           registry: docker.io
