@@ -1,7 +1,7 @@
 name: push
 on:
   push:
-    tags:
+    branches:
       - '*'
 jobs:
   build_push:
@@ -13,9 +13,9 @@ jobs:
       - uses: rlespinasse/github-slug-action@v3.x
       - uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: moneycircles/mc-ubuntu18
+          image: mc-ubuntu18
           dockerfile: 'docker-images/dind-az-helm/Dockerfile'
           password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
-          registry: docker.io
+          registry: docker.io/moneycircles
           tag: ${{ env.GITHUB_REF_SLUG }}
           username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
