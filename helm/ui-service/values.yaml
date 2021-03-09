@@ -1,0 +1,5 @@
+image: kennethreitz/httpbin
+httpPort: 80
+host: money-circles.com
+replicas: 1
+environment: production
